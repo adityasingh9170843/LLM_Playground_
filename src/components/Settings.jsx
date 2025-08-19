@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 function Settings() {
-  const [gemini, setGemini] = useState(localStorage.getItem("geminiKey"));
-  const [groq, setGroq] = useState(localStorage.getItem("groqKey"));
+  const [gemini, setGemini] = useState(localStorage.getItem("geminiKey") || "");
+  const [groq, setGroq] = useState(localStorage.getItem("groqKey") || "");
 
   const saveKeys = () => {
     localStorage.setItem("geminiKey", gemini);
@@ -10,29 +13,33 @@ function Settings() {
   };
 
   return (
-    <div className="p-4 border rounded shadow bg-gray-100">
-      <h2 className="font-bold mb-2">⚙️ API Keys</h2>
-      <input
-        type="text"
-        placeholder="Groq Key"
-        value={groq}
-        onChange={(e) => setGroq(e.target.value)}
-        className="border p-2 w-full mb-2 rounded"
-      />
-      <input
-        type="text"
-        placeholder="Gemini API Key"
-        value={gemini}
-        onChange={(e) => setGemini(e.target.value)}
-        className="border p-2 w-full mb-2 rounded"
-      />
-      <button
-        onClick={saveKeys}
-        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-      >
-        Save
-      </button>
-    </div>
+    <Card className="bg-gray-900 border border-gray-700 shadow-lg text-white">
+      <CardHeader>
+        <CardTitle className="text-blue-400">⚙️ API Keys</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <Input
+          type="text"
+          placeholder="Groq API Key"
+          value={groq}
+          onChange={(e) => setGroq(e.target.value)}
+          className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
+        />
+        <Input
+          type="text"
+          placeholder="Gemini API Key"
+          value={gemini}
+          onChange={(e) => setGemini(e.target.value)}
+          className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
+        />
+        <Button
+          onClick={saveKeys}
+          className="bg-green-600 hover:bg-green-700 text-white w-full"
+        >
+          Save Keys
+        </Button>
+      </CardContent>
+    </Card>
   );
 }
 
