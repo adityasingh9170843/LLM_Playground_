@@ -1,11 +1,17 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Zap, Key, GitCompare } from "lucide-react"
+import { ArrowRight, Zap, Key, GitCompare, Brain } from "lucide-react"
 import { Link } from "react-router-dom"
 export default function LandingPage() {
   return (
     <div className="dark min-h-screen bg-slate-900 text-white">
+      <div className="fixed top-6 left-6 z-50">
+        <div className="flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border/50 rounded-full px-4 py-2 hover:bg-card/90 transition-colors">
+          <Brain className="h-5 w-5 text-primary" />
+          <span className="text-sm font-medium text-white">LLM Playground</span>
+        </div>
+      </div>
+
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-20 w-32 h-32 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
         <div className="absolute top-40 right-32 w-24 h-24 bg-accent/30 rounded-full blur-xl animate-pulse [animation-delay:1s]"></div>
@@ -15,9 +21,6 @@ export default function LandingPage() {
 
       <div className="relative z-10">
         <header className="container mx-auto px-4 py-16 text-center">
-          <Badge variant="secondary" className="mb-4">
-            LLM Playground
-          </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Compare Multiple LLMs
             <br />
@@ -28,13 +31,10 @@ export default function LandingPage() {
             which LLM works best for your needs.
           </p>
           <Button size="lg" className="group" asChild>
-            <a href="/playground">
-              <Link to="/prompt">
-              
+            <Link to="/prompt">
               Get Started
-              </Link>
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </Button>
         </header>
 
@@ -122,7 +122,7 @@ export default function LandingPage() {
           <h2 className="text-2xl font-bold mb-4 text-white">Ready to Compare LLMs?</h2>
           <p className="text-white/70 mb-8">Start testing different language models with your own API keys today.</p>
           <Button size="lg" variant="outline" className="group bg-transparent" asChild>
-            <Link to="/prompt">
+            <Link to="/playground">
               Launch Playground
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
