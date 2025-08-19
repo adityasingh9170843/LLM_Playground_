@@ -21,7 +21,7 @@ export default function LandingPage() {
 
       <div className="relative z-10">
         <header className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 p-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Compare Multiple LLMs
             <br />
             Side by Side
