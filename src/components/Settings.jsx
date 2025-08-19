@@ -9,12 +9,16 @@ import { SettingsIcon, Key, Save } from "lucide-react"
 function Settings() {
   const [gemini, setGemini] = useState(localStorage.getItem("geminiKey") || "")
   const [groq, setGroq] = useState(localStorage.getItem("groqKey") || "")
+  const[deepseek, setDeepseek] = useState(localStorage.getItem("deepseekKey") || "")
+  const[meta, setMeta] = useState(localStorage.getItem("metaKey") || "")
   const [isSaving, setIsSaving] = useState(false)
 
   const saveKeys = async () => {
     setIsSaving(true)
     localStorage.setItem("geminiKey", gemini)
     localStorage.setItem("groqKey", groq)
+    localStorage.setItem("deepseekKey", deepseek)
+    localStorage.setItem("metaKey", meta)
 
     await new Promise((resolve) => setTimeout(resolve, 1000))
     setIsSaving(false)
@@ -69,6 +73,34 @@ function Settings() {
               placeholder="Enter your Gemini API key..."
               value={gemini}
               onChange={(e) => setGemini(e.target.value)}
+              className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-cyan-400 focus:ring-cyan-400/20"
+            />
+          </div>
+
+           <div className="space-y-2">
+            <label className="text-slate-200 text-sm font-medium flex items-center gap-2">
+              <Key className="w-4 h-4" />
+              Deepseek API Key
+            </label>
+            <Input
+              type="password"
+              placeholder="Enter your Gemini API key..."
+              value={deepseek}
+              onChange={(e) => setDeepseek(e.target.value)}
+              className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-cyan-400 focus:ring-cyan-400/20"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-slate-200 text-sm font-medium flex items-center gap-2">
+              <Key className="w-4 h-4" />
+              Meta API Key
+            </label>
+            <Input
+              type="password"
+              placeholder="Enter your Gemini API key..."
+              value={meta}
+              onChange={(e) => setMeta(e.target.value)}
               className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-cyan-400 focus:ring-cyan-400/20"
             />
           </div>

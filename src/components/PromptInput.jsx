@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchGeminiAi, fetchGroqAi } from "../utils/api";
+import { fetchGeminiAi, fetchGroqAi,fetchDeepSeek,fetchLlama } from "../utils/api";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -17,14 +17,20 @@ const PromptWithResults = () => {
 
     const geminiKey = localStorage.getItem("geminiKey");
     const groqKey = localStorage.getItem("groqKey");
+    const deepseekKey = localStorage.getItem("deepseekKey");
+    const metaKey = localStorage.getItem("metaKey");
     const responses = await Promise.all([
       fetchGeminiAi(prompt, geminiKey),
       fetchGroqAi(prompt, groqKey),
+      fetchDeepSeek(prompt, deepseekKey),
+      fetchLlama(prompt, metaKey),
     ]);
 
     setResults([
       { model: "Google Gemini", text: responses[0], icon: Sparkles },
-      { model: "Groq", text: responses[1], icon: Zap },
+      { model: "ChatGPT", text: responses[1], icon: Zap },
+      { model: "DeepSeek", text: responses[2], icon: Brain },
+      { model: "Llama", text: responses[3], icon: Send },
     ]);
 
     setLoading(false);
