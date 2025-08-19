@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import PromptWithResults from "./components/promptInput"
+import Settings from "./components/Settings"
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="min-h-screen bg-gray-100 flex flex-col">
+        {/* Navbar */}
+        <nav className="bg-white shadow px-6 py-4 flex justify-between items-center">
+          <h1 className="text-xl font-bold text-gray-700">Multi-LLM Playground</h1>
+          <div className="space-x-4">
+            <Link
+              to="/"
+              className="text-gray-600 hover:text-blue-500 transition-colors"
+            >
+              Home
+            </Link>
+            <Link
+              to="/settings"
+              className="text-gray-600 hover:text-blue-500 transition-colors"
+            >
+              Settings
+            </Link>
+          </div>
+        </nav>
+
+        {/* Main Content */}
+        <main className="flex-1 p-6">
+          <Routes>
+            <Route path="/" element={<PromptWithResults />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
 export default App
