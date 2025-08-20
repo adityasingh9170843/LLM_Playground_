@@ -1,6 +1,6 @@
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
-import PromptWithResults from "./components/promptInput"
+import PromptWithResults from "./components/PromptWithResults"
 import Settings from "./components/Settings"
 import LandingPage from "./components/LandingPage";
 function App() {
